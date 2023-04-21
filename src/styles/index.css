@@ -1,0 +1,23 @@
+:root {
+  --neon-green: hsl(150, 100%, 66%);
+}
+
+button:hover {
+  box-shadow: 0 0 2rem var(--neon-green);
+}
+
+button:hover #dice {
+  animation-name: spin;
+  animation-duration: 3000ms;
+  animation-iteration-count: 3;
+  animation-timing-function: ease-in-out;
+}
+
+@keyframes spin {
+  from {
+    transform:rotate(0deg);
+  }
+  to {
+    transform:rotate(1440deg);
+  }
+}
