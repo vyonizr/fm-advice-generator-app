@@ -37,28 +37,28 @@ function AdviceCard() {
 
   return (
     <main className='rounded-2xl bg-darkGrayishBlue relative flex flex-col items-center pt-8 pb-12 w-[21.5rem] md:w-[29.375rem]'>
+      {isLoading && <BodyText>Loading...</BodyText>}
+      {isError && (
+        <BodyText>Something's went wrong. Please refresh the page.</BodyText>
+      )}
       {shouldDisplayAdvice && (
         <>
           <h1 className='font-manrope text-neonGreen tracking-[.375em] text-[10px]'>
             ADVICE #{advice.id}
           </h1>
           <BodyText>“{advice.advice}”</BodyText>
+          <img
+            src='/images/pattern-divider-desktop.svg'
+            alt='divider'
+            className='invisible md:visible'
+          />
+          <img
+            src='/images/pattern-divider-mobile.svg'
+            alt='divider'
+            className='md:invisible'
+          />
         </>
       )}
-      {isLoading && <BodyText>Loading...</BodyText>}
-      {isError && (
-        <BodyText>Something's went wrong. Please refresh the page.</BodyText>
-      )}
-      <img
-        src='/images/pattern-divider-desktop.svg'
-        alt='divider'
-        className='invisible md:visible'
-      />
-      <img
-        src='/images/pattern-divider-mobile.svg'
-        alt='divider'
-        className='md:invisible'
-      />
       <button
         className='transition-all bg-neonGreen shadow-neonGreen w-14 h-14 rounded-full absolute -bottom-[1.75rem] flex items-center justify-center'
         onClick={fetchAdvice}
