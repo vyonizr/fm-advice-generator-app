@@ -32,19 +32,22 @@ function AdviceCard() {
     fetchAdvice()
   }, [])
 
+  const shouldDisplayAdvice =
+    !isLoading && !isError && advice.id !== null && advice.advice.length > 0
+
   return (
     <main className='rounded-2xl bg-darkGrayishBlue relative flex flex-col items-center pt-8 pb-12 w-[21.5rem] md:w-[29.375rem]'>
-      {isLoading ? (
-        <BodyText>Loading...</BodyText>
-      ) : isError ? (
-        <BodyText>Something's went wrong. Please refresh the page.</BodyText>
-      ) : (
+      {shouldDisplayAdvice && (
         <>
           <h1 className='font-manrope text-neonGreen tracking-[.375em] text-[10px]'>
             ADVICE #{advice.id}
           </h1>
           <BodyText>“{advice.advice}”</BodyText>
         </>
+      )}
+      {isLoading && <BodyText>Loading...</BodyText>}
+      {isError && (
+        <BodyText>Something's went wrong. Please refresh the page.</BodyText>
       )}
       <img
         src='/images/pattern-divider-desktop.svg'
